@@ -34,17 +34,77 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yvb-NM-lD6">
                                 <rect key="frame" x="30" y="69" width="333" height="589"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5tb-EY-Pa8">
-                                        <rect key="frame" x="0.0" y="0.0" width="333" height="589"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Get-iA-cxw" userLabel="LoadingView">
+                                        <rect key="frame" x="16.666666666666657" y="144.66666666666663" width="300" height="300"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                    </tableView>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="DQn-Mi-QMD"/>
+                                            <constraint firstAttribute="height" constant="300" id="iog-Bv-065"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CeP-jP-r1J" userLabel="WaitingView">
+                                        <rect key="frame" x="16.666666666666657" y="144.66666666666663" width="300" height="300"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="300" id="J9a-QK-9ea"/>
+                                            <constraint firstAttribute="width" constant="300" id="Lbv-TM-HAA"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="店名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWz-mE-J8X">
+                                        <rect key="frame" x="10" y="10" width="313" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="aQk-R3-X98"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="30"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="所要時間" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kg-8k-Qzh">
+                                        <rect key="frame" x="10" y="70" width="313" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="BwF-mP-Lvi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rJ0-w0-lfr">
+                                        <rect key="frame" x="10" y="130" width="313" height="449"/>
+                                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <wkWebViewConfiguration key="configuration">
+                                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                            <wkPreferences key="preferences"/>
+                                        </wkWebViewConfiguration>
+                                    </wkWebView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Web Site!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dw-Gp-cPG">
+                                        <rect key="frame" x="30" y="459" width="273" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="RXP-bY-3Ri"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="5tb-EY-Pa8" secondAttribute="bottom" id="CXU-Xh-ufJ"/>
-                                    <constraint firstItem="5tb-EY-Pa8" firstAttribute="leading" secondItem="yvb-NM-lD6" secondAttribute="leading" id="LNT-tF-Xsv"/>
-                                    <constraint firstItem="5tb-EY-Pa8" firstAttribute="top" secondItem="yvb-NM-lD6" secondAttribute="top" id="tq8-9V-40L"/>
-                                    <constraint firstAttribute="trailing" secondItem="5tb-EY-Pa8" secondAttribute="trailing" id="vAl-lm-dcS"/>
+                                    <constraint firstItem="5kg-8k-Qzh" firstAttribute="leading" secondItem="yvb-NM-lD6" secondAttribute="leading" constant="10" id="5Q6-39-eIR"/>
+                                    <constraint firstAttribute="bottom" secondItem="rJ0-w0-lfr" secondAttribute="bottom" constant="10" id="Abh-fZ-s9r"/>
+                                    <constraint firstItem="4dw-Gp-cPG" firstAttribute="leading" secondItem="yvb-NM-lD6" secondAttribute="leading" constant="30" id="Hld-9c-pLj"/>
+                                    <constraint firstItem="Get-iA-cxw" firstAttribute="centerY" secondItem="yvb-NM-lD6" secondAttribute="centerY" id="JO1-yW-WfS"/>
+                                    <constraint firstItem="CeP-jP-r1J" firstAttribute="centerX" secondItem="yvb-NM-lD6" secondAttribute="centerX" id="RZW-Cq-hVk"/>
+                                    <constraint firstItem="5kg-8k-Qzh" firstAttribute="top" secondItem="dWz-mE-J8X" secondAttribute="bottom" constant="10" id="T19-fd-pWP"/>
+                                    <constraint firstItem="rJ0-w0-lfr" firstAttribute="top" secondItem="5kg-8k-Qzh" secondAttribute="bottom" constant="10" id="e1w-8s-M02"/>
+                                    <constraint firstAttribute="bottom" secondItem="4dw-Gp-cPG" secondAttribute="bottom" constant="80" id="eoq-hF-AUG"/>
+                                    <constraint firstItem="CeP-jP-r1J" firstAttribute="centerY" secondItem="yvb-NM-lD6" secondAttribute="centerY" id="gle-Wg-UpF"/>
+                                    <constraint firstItem="Get-iA-cxw" firstAttribute="centerX" secondItem="yvb-NM-lD6" secondAttribute="centerX" id="gyo-kB-fY2"/>
+                                    <constraint firstItem="dWz-mE-J8X" firstAttribute="top" secondItem="yvb-NM-lD6" secondAttribute="top" constant="10" id="iPI-lc-S0f"/>
+                                    <constraint firstItem="dWz-mE-J8X" firstAttribute="leading" secondItem="yvb-NM-lD6" secondAttribute="leading" constant="10" id="kHy-5j-NMU"/>
+                                    <constraint firstAttribute="trailing" secondItem="dWz-mE-J8X" secondAttribute="trailing" constant="10" id="msi-6O-Wpe"/>
+                                    <constraint firstAttribute="trailing" secondItem="4dw-Gp-cPG" secondAttribute="trailing" constant="30" id="mv3-Zz-Nkq"/>
+                                    <constraint firstAttribute="trailing" secondItem="rJ0-w0-lfr" secondAttribute="trailing" constant="10" id="o7h-Tr-Bua"/>
+                                    <constraint firstAttribute="trailing" secondItem="5kg-8k-Qzh" secondAttribute="trailing" constant="10" id="pz5-cD-qFQ"/>
+                                    <constraint firstItem="rJ0-w0-lfr" firstAttribute="leading" secondItem="yvb-NM-lD6" secondAttribute="leading" constant="10" id="wIM-Uq-tyB"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -63,7 +123,12 @@
                     <connections>
                         <outlet property="button" destination="PsB-hX-QWU" id="5wW-vx-WIU"/>
                         <outlet property="containerView" destination="yvb-NM-lD6" id="C5m-VP-tpv"/>
-                        <outlet property="shopTableView" destination="5tb-EY-Pa8" id="MxO-4W-Rv3"/>
+                        <outlet property="costTimeLabel" destination="5kg-8k-Qzh" id="daI-wx-kpE"/>
+                        <outlet property="loadingView" destination="Get-iA-cxw" id="67o-yY-O8p"/>
+                        <outlet property="noWebSiteLabel" destination="4dw-Gp-cPG" id="jtn-qY-hWt"/>
+                        <outlet property="shopNameLabel" destination="dWz-mE-J8X" id="fKe-9v-wIp"/>
+                        <outlet property="waitingView" destination="CeP-jP-r1J" id="c6y-Di-5dr"/>
+                        <outlet property="webView" destination="rJ0-w0-lfr" id="uvF-Nu-Zp4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

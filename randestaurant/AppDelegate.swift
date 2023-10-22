@@ -45,7 +45,6 @@ extension AppDelegate: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             userLocation = location.coordinate
-//            print("The coornidate is \(String(describing: userLocation?.latitude)), \(String(describing: userLocation?.longitude))")
         }
     }
     

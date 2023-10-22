@@ -9,6 +9,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import Lottie
+import WebKit
 
 
 
@@ -16,22 +17,29 @@ struct Shop {
     var name: String?
     var phoneNumber: String?
     var website: URL?
+    var location: CLLocationCoordinate2D?
 }
 
 class ViewController: UIViewController {
     @IBOutlet weak var button: UIButton!
-    @IBOutlet weak var coordinateLabel: UILabel!
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var shopTableView: UITableView!
+    @IBOutlet weak var loadingView: UIView!
+    @IBOutlet weak var waitingView: UIView!
+    @IBOutlet weak var shopNameLabel: UILabel!
+    @IBOutlet weak var costTimeLabel: UILabel!
+    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var noWebSiteLabel: UILabel!
     
     var userLocation: CLLocationCoordinate2D?
     var shops = [Shop]()
-    var starAnimationView = LottieAnimationView()
+    var foodAnimationView = LottieAnimationView()
+    var loadingAnimationView = LottieAnimationView()
+    var waitingAnimationView = LottieAnimationView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setUpShopTableView()
+        setUpWallPaperView()
         setUpContainerView()
         setUpButton()
     }
@@ -45,91 +53,168 @@ class ViewController: UIViewController {
         containerView.layer.shadowOffset = CGSize(width: 0, height: 2)
         containerView.layer.shadowRadius = 4
         containerView.layer.shadowOpacity = 0.5
-        containerView.layer.cornerRadius = 50
-//        containerView.clipsToBounds = true
-
-        // 5. 确保 UITableView 和 UITableViewCell 的背景是透明的
-        shopTableView.backgroundColor = .clear
-
-    }
-    
-    private func setUpShopTableView() {
-        shopTableView.dataSource = self
-        shopTableView.delegate = self
-        shopTableView.register(UINib(nibName: "ShopTableViewCell", bundle: nil),forCellReuseIdentifier:"ShopTableViewCell")
-        shopTableView.rowHeight = UITableView.automaticDimension
-        shopTableView.estimatedRowHeight = 100.0
-
-//        // 1. 设置背景颜色为白色
-//        shopTableView.backgroundColor = .white
-//
-//        // 2. 添加阴影效果
-//        shopTableView.layer.shadowColor = UIColor.black.cgColor // 阴影颜色
-//        shopTableView.layer.shadowOffset = CGSize(width: 0, height: 2) // 阴影偏移量
-//        shopTableView.layer.shadowRadius = 4  // 阴影半径
-//        shopTableView.layer.shadowOpacity = 0.5 // 阴影不透明度
-//        shopTableView.layer.masksToBounds = false // 允许阴影超出视图边界
-//        shopTableView.layer.cornerRadius = 50
-
-    }
-    
-    private func setUpStarView() {
-        starAnimationView = LottieAnimationView(name: "food_01")
-        starAnimationView.animationSpeed = 5
-        starAnimationView.translatesAutoresizingMaskIntoConstraints = false
-        starAnimationView.isUserInteractionEnabled = false
+        containerView.layer.cornerRadius = 30
         
-        button.addSubview(starAnimationView)
+        containerView.backgroundColor = UIColor.white.withAlphaComponent(0.5)
+        
+        shopNameLabel.adjustsFontSizeToFitWidth = true
+        shopNameLabel.minimumScaleFactor = 0.5
+        shopNameLabel.numberOfLines = 0
+        
+        shopNameLabel.isHidden = true
+        costTimeLabel.isHidden = true
+        webView.isHidden = true
+        webView.layer.cornerRadius = 20
+        webView.clipsToBounds = true
+        
+        setUpLoadingView()
+        setUpWaitingView()
+
+    }
+    
+    private func setUpFoodView() {
+        foodAnimationView = LottieAnimationView(name: "food_01")
+        foodAnimationView.animationSpeed = 3
+        foodAnimationView.translatesAutoresizingMaskIntoConstraints = false
+        foodAnimationView.isUserInteractionEnabled = false
+        foodAnimationView.loopMode = .loop
+        
+        button.addSubview(foodAnimationView)
         
         NSLayoutConstraint.activate([
-            starAnimationView.centerXAnchor.constraint(equalTo: button.centerXAnchor),
-            starAnimationView.bottomAnchor.constraint(equalTo: button.titleLabel!.topAnchor, constant: -5),
-            starAnimationView.heightAnchor.constraint(equalToConstant: 100)
+            foodAnimationView.centerXAnchor.constraint(equalTo: button.centerXAnchor),
+            foodAnimationView.bottomAnchor.constraint(equalTo: button.titleLabel!.topAnchor, constant: -5),
+            foodAnimationView.heightAnchor.constraint(equalToConstant: 100)
         ])
-
-        starAnimationView.play()
     }
     
     private func setUpButton() {
-        
-//        var transform = CATransform3DIdentity
-//        transform.m34 = -1.0 / 500.0  // 透视效果
-//        transform = CATransform3DRotate(transform, CGFloat.pi / 6, 1, 0, 0) // 绕x轴旋转
-//        button.layer.transform = transform
-
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOffset = CGSize(width: 0, height: 2)
         button.layer.shadowRadius = 5
         button.layer.shadowOpacity = 0.5
-        button.layer.cornerRadius = 50
+        button.layer.cornerRadius = 30
 
         button.backgroundColor = .white
         
         button.configuration?.contentInsets.top = 100
         button.setNeedsLayout()
-        setUpStarView()
+        setUpFoodView()
+    }
+    
+    private func setUpWallPaperView() {
+        let wallPaperView = LottieAnimationView(name: "wallPaperAnimation")
+        wallPaperView.translatesAutoresizingMaskIntoConstraints = false
+        wallPaperView.isUserInteractionEnabled = false
+        
+        view.insertSubview(wallPaperView, at: 0)
+        
+        NSLayoutConstraint.activate([
+            wallPaperView.topAnchor.constraint(equalTo: view.topAnchor),
+            wallPaperView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            wallPaperView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            wallPaperView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+        
+        wallPaperView.loopMode = .loop
+        wallPaperView.play()
+    }
+    
+    private func setUpLoadingView() {
+        loadingView.isHidden = true
+        loadingView.backgroundColor = UIColor.white.withAlphaComponent(0)
+
+        loadingAnimationView = LottieAnimationView(name : "loading_01")
+        loadingAnimationView.translatesAutoresizingMaskIntoConstraints = false
+        
+        loadingView.addSubview(loadingAnimationView)
+        
+        NSLayoutConstraint.activate([
+            loadingAnimationView.topAnchor.constraint(equalTo: loadingView.topAnchor),
+            loadingAnimationView.bottomAnchor.constraint(equalTo: loadingView.bottomAnchor),
+            loadingAnimationView.leadingAnchor.constraint(equalTo: loadingView.leadingAnchor),
+            loadingAnimationView.trailingAnchor.constraint(equalTo: loadingView.trailingAnchor)
+        ])
+        
+        loadingAnimationView.loopMode = .loop
+    }
+    
+    private func setUpWaitingView() {
+        waitingView.isHidden = true
+        waitingView.backgroundColor = UIColor.white.withAlphaComponent(0)
+        
+        waitingAnimationView = LottieAnimationView(name : "waiting_01")
+        waitingAnimationView.translatesAutoresizingMaskIntoConstraints = false
+        
+        waitingView.addSubview(waitingAnimationView)
+        
+        NSLayoutConstraint.activate([
+            waitingAnimationView.topAnchor.constraint(equalTo: waitingView.topAnchor),
+            waitingAnimationView.bottomAnchor.constraint(equalTo: waitingView.bottomAnchor),
+            waitingAnimationView.leadingAnchor.constraint(equalTo: waitingView.leadingAnchor),
+            waitingAnimationView.trailingAnchor.constraint(equalTo: waitingView.trailingAnchor)
+        ])
+        
+        waitingAnimationView.loopMode = .loop
+        
+        noWebSiteLabel.isHidden = true
+        
+        startWaiting()
+    }
+    
+    private func startWaiting() {
+        waitingView.isHidden = false
+        waitingAnimationView.play()
+    }
+    
+    private func startLoading() {
+        shopNameLabel.isHidden = true
+        costTimeLabel.isHidden = true
+        webView.isHidden = true
+        waitingView.isHidden = true
+        waitingAnimationView.stop()
+        
+        loadingView.isHidden = false
+        loadingAnimationView.play()
+        foodAnimationView.play()
+    }
+    
+    private func stopLoading() {
+        shopNameLabel.isHidden = false
+        costTimeLabel.isHidden = false
+        webView.isHidden = false
+
+        loadingView.isHidden = true
+        loadingAnimationView.stop()
+        foodAnimationView.stop()
     }
 
     @IBAction func buttonPressed(_ sender: UIButton) {
-        starAnimationView.play()
-        
+        foodAnimationView.play()
+        startLoading()
+        startSearch()
+    }
+    
+    private func startSearch() {
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let location = appDelegate.userLocation {
             search_restaurant(userLocation: location)
         } else {
-            coordinateLabel.text = "座標見つかりません。"
+            button.titleLabel?.text = "座標見つかりません！"
         }
     }
 
     func search_restaurant(userLocation: CLLocationCoordinate2D) {
         let request = MKLocalSearch.Request()
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         
-        request.naturalLanguageQuery = "ファーストフード" // 検索キーワードを入力
-        request.region = MKCoordinateRegion(center: userLocation , span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+        request.naturalLanguageQuery = "回転寿司" // 検索キーワードを入力
+        request.region = MKCoordinateRegion(center: userLocation , span: span)
         
-        //        let category: [MKPointOfInterestCategory] = [
-        //            .airport,
-        //            .library
-        //        ]
+//        let category: [MKPointOfInterestCategory] = [
+//            .airport,
+//            .library,
+//            ...
+//        ]
         
         
         request.resultTypes = .pointOfInterest
@@ -137,9 +222,11 @@ class ViewController: UIViewController {
         shops = [Shop]()
         
         let search = MKLocalSearch(request: request)
+
         search.start { (response, error) in
             guard let response = response else {
                 print("Search error: \(error?.localizedDescription ?? "Unknown error")")
+                self.stopLoading()
                 return
             }
 
@@ -147,41 +234,81 @@ class ViewController: UIViewController {
                 let shop = Shop(
                     name: item.name ?? "おっと！何か問題あったようだ。。",
                     phoneNumber: item.phoneNumber,
-                    website: item.url
+                    website: item.url,
+                    location: item.placemark.coordinate
                 )
                 self.shops.append(shop)
                 print(item.pointOfInterestCategory!)
             }
             
-            self.shopTableView.reloadData()
+            self.randomRestaurant()
+            
+            self.stopLoading()
         }
-
-    }
-}
-
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return shops.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ShopTableViewCell", for: indexPath) as! ShopTableViewCell
-        
-        let shop = shops[indexPath.row]
-        cell.shopNameLabel?.text = shop.name
-        cell.tellPhoneLabel?.text = shop.phoneNumber
-        if let urlString = shop.website?.absoluteString {
-            cell.webSiteLabel?.text = urlString
-        }
-        
-        print(shop.name ?? "name??")
-        print(cell.shopNameLabel?.text ?? "shopname??")
-        
-        return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        _ = shops[indexPath.row]
+    private func randomRestaurant() {
+        shopNameLabel.isHidden = false
+        costTimeLabel.isHidden = false
+        webView.isHidden = false
+
+        if let randomShop = shops.randomElement() {
+            shopNameLabel.text = randomShop.name
+            handleWebView(for: randomShop)
+            
+            if let shopLocation = randomShop.location {
+                calculateWalkingTime(destination: shopLocation) { (time, error) in
+                    if let time = time {
+                        self.costTimeLabel.text = "歩いて約 \(time) 分"
+                    } else if let error = error {
+                        print("Error getting walking time: \(error)")
+                    }
+                }
+            }
+        }
+    }
+    
+    private func handleWebView(for shop: Shop) {
+        if let url = shop.website {
+//            let urlString = url.absoluteString
+            let request = URLRequest(url: url)
+            webView.alpha = 1
+            webView.isUserInteractionEnabled = true
+            noWebSiteLabel.isHidden = true
+            webView.load(request)
+            print(url)
+        } else {
+            webView.alpha = 0
+            webView.isUserInteractionEnabled = false
+            noWebSiteLabel.isHidden = false
+            print("URLがない！")
+            startWaiting()
+        }
+    }
+
+
+    private func calculateWalkingTime(destination: CLLocationCoordinate2D, completion: @escaping (Int?, Error?) -> Void) {
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate, let location = appDelegate.userLocation {
+            let sourcePlacemark = MKPlacemark(coordinate: location)
+            let destinationPlacemark = MKPlacemark(coordinate: destination)
+
+            let request = MKDirections.Request()
+            request.source = MKMapItem(placemark: sourcePlacemark)
+            request.destination = MKMapItem(placemark: destinationPlacemark)
+            request.transportType = .walking
+
+            let directions = MKDirections(request: request)
+            directions.calculate { (response, error) in
+                if let route = response?.routes.first {
+                    let timeInMinutes = Int(route.expectedTravelTime / 60.0)
+                    completion(timeInMinutes, nil)
+                } else {
+                    completion(nil, error)
+                }
+            }
+        } else {
+            button.titleLabel?.text = "座標見つかりません！"
+        }
     }
 
 }

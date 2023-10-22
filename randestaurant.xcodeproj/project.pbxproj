@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		522A16D52AE509FB0009B0B1 /* NewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A16D42AE509FB0009B0B1 /* NewButton.swift */; };
+		522A16D72AE528BF0009B0B1 /* wallPaperAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = 522A16D62AE528BF0009B0B1 /* wallPaperAnimation.json */; };
+		522A16D92AE52ECA0009B0B1 /* cafe.json in Resources */ = {isa = PBXBuildFile; fileRef = 522A16D82AE52ECA0009B0B1 /* cafe.json */; };
+		522A16DB2AE52F3A0009B0B1 /* loading_01.json in Resources */ = {isa = PBXBuildFile; fileRef = 522A16DA2AE52F3A0009B0B1 /* loading_01.json */; };
 		5269FD952AE250BB00E1DFCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269FD942AE250BB00E1DFCC /* AppDelegate.swift */; };
 		5269FD972AE250BB00E1DFCC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269FD962AE250BB00E1DFCC /* SceneDelegate.swift */; };
 		5269FD992AE250BB00E1DFCC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269FD982AE250BB00E1DFCC /* ViewController.swift */; };
@@ -22,6 +25,8 @@
 		52B073222AE2C02500273C2E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 52B073212AE2C02500273C2E /* Lottie */; };
 		52B073242AE2CB9600273C2E /* animation_01.json in Resources */ = {isa = PBXBuildFile; fileRef = 52B073232AE2CB9600273C2E /* animation_01.json */; };
 		52B073262AE2CC9900273C2E /* food_01.json in Resources */ = {isa = PBXBuildFile; fileRef = 52B073252AE2CC9900273C2E /* food_01.json */; };
+		52E275302AE549B60022C986 /* waiting_01.json in Resources */ = {isa = PBXBuildFile; fileRef = 52E2752F2AE549B60022C986 /* waiting_01.json */; };
+		52E275342AE562B70022C986 /* randestaurantIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 52E275332AE562B70022C986 /* randestaurantIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +48,9 @@
 
 /* Begin PBXFileReference section */
 		522A16D42AE509FB0009B0B1 /* NewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewButton.swift; sourceTree = "<group>"; };
+		522A16D62AE528BF0009B0B1 /* wallPaperAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = wallPaperAnimation.json; sourceTree = "<group>"; };
+		522A16D82AE52ECA0009B0B1 /* cafe.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cafe.json; sourceTree = "<group>"; };
+		522A16DA2AE52F3A0009B0B1 /* loading_01.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_01.json; sourceTree = "<group>"; };
 		5269FD912AE250BB00E1DFCC /* randestaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = randestaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5269FD942AE250BB00E1DFCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5269FD962AE250BB00E1DFCC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +70,8 @@
 		52B0731D2AE2A89100273C2E /* ShopTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopTableViewCell.xib; sourceTree = "<group>"; };
 		52B073232AE2CB9600273C2E /* animation_01.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_01.json; sourceTree = "<group>"; };
 		52B073252AE2CC9900273C2E /* food_01.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = food_01.json; sourceTree = "<group>"; };
+		52E2752F2AE549B60022C986 /* waiting_01.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = waiting_01.json; sourceTree = "<group>"; };
+		52E275332AE562B70022C986 /* randestaurantIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = randestaurantIcon.png; path = ../../../../Downloads/randestaurantIcon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +129,7 @@
 				5269FD982AE250BB00E1DFCC /* ViewController.swift */,
 				5269FD9A2AE250BB00E1DFCC /* Main.storyboard */,
 				5269FD9D2AE250BC00E1DFCC /* Assets.xcassets */,
+				52E275332AE562B70022C986 /* randestaurantIcon.png */,
 				5269FD9F2AE250BC00E1DFCC /* LaunchScreen.storyboard */,
 				52B073272AE2CCA400273C2E /* LottieAnimation */,
 				5269FDA22AE250BC00E1DFCC /* Info.plist */,
@@ -158,6 +169,10 @@
 		52B073272AE2CCA400273C2E /* LottieAnimation */ = {
 			isa = PBXGroup;
 			children = (
+				52E2752F2AE549B60022C986 /* waiting_01.json */,
+				522A16DA2AE52F3A0009B0B1 /* loading_01.json */,
+				522A16D82AE52ECA0009B0B1 /* cafe.json */,
+				522A16D62AE528BF0009B0B1 /* wallPaperAnimation.json */,
 				52B073232AE2CB9600273C2E /* animation_01.json */,
 				52B073252AE2CC9900273C2E /* food_01.json */,
 			);
@@ -274,10 +289,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				522A16D92AE52ECA0009B0B1 /* cafe.json in Resources */,
+				52E275302AE549B60022C986 /* waiting_01.json in Resources */,
 				5269FDA12AE250BC00E1DFCC /* LaunchScreen.storyboard in Resources */,
 				5269FD9E2AE250BC00E1DFCC /* Assets.xcassets in Resources */,
+				52E275342AE562B70022C986 /* randestaurantIcon.png in Resources */,
+				522A16DB2AE52F3A0009B0B1 /* loading_01.json in Resources */,
 				52B073262AE2CC9900273C2E /* food_01.json in Resources */,
 				5269FD9C2AE250BB00E1DFCC /* Main.storyboard in Resources */,
+				522A16D72AE528BF0009B0B1 /* wallPaperAnimation.json in Resources */,
 				52B0731F2AE2A89100273C2E /* ShopTableViewCell.xib in Resources */,
 				52B073242AE2CB9600273C2E /* animation_01.json in Resources */,
 			);

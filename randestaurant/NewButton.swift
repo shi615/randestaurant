@@ -5,7 +5,7 @@ class NewButton: UIButton {
     
     let starAnimationView = LottieAnimationView(name: "food_01")
     
-    private let defaultShadowOpacity: Float = 0.5
+    private let defaultShadowOpacity: Float = 0.7
     private let defaultShadowOffset = CGSize(width: 0, height: 5)
     private let defaultShadowRadius: CGFloat = 5
     
