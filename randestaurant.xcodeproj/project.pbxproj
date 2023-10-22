@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		522A16D52AE509FB0009B0B1 /* NewButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522A16D42AE509FB0009B0B1 /* NewButton.swift */; };
 		5269FD952AE250BB00E1DFCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269FD942AE250BB00E1DFCC /* AppDelegate.swift */; };
 		5269FD972AE250BB00E1DFCC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269FD962AE250BB00E1DFCC /* SceneDelegate.swift */; };
 		5269FD992AE250BB00E1DFCC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269FD982AE250BB00E1DFCC /* ViewController.swift */; };
@@ -16,6 +17,11 @@
 		5269FDAC2AE250BD00E1DFCC /* randestaurantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269FDAB2AE250BD00E1DFCC /* randestaurantTests.swift */; };
 		5269FDB62AE250BD00E1DFCC /* randestaurantUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269FDB52AE250BD00E1DFCC /* randestaurantUITests.swift */; };
 		5269FDB82AE250BD00E1DFCC /* randestaurantUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5269FDB72AE250BD00E1DFCC /* randestaurantUITestsLaunchTests.swift */; };
+		52B0731E2AE2A89100273C2E /* ShopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B0731C2AE2A89100273C2E /* ShopTableViewCell.swift */; };
+		52B0731F2AE2A89100273C2E /* ShopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52B0731D2AE2A89100273C2E /* ShopTableViewCell.xib */; };
+		52B073222AE2C02500273C2E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 52B073212AE2C02500273C2E /* Lottie */; };
+		52B073242AE2CB9600273C2E /* animation_01.json in Resources */ = {isa = PBXBuildFile; fileRef = 52B073232AE2CB9600273C2E /* animation_01.json */; };
+		52B073262AE2CC9900273C2E /* food_01.json in Resources */ = {isa = PBXBuildFile; fileRef = 52B073252AE2CC9900273C2E /* food_01.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		522A16D42AE509FB0009B0B1 /* NewButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewButton.swift; sourceTree = "<group>"; };
 		5269FD912AE250BB00E1DFCC /* randestaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = randestaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5269FD942AE250BB00E1DFCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5269FD962AE250BB00E1DFCC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +56,12 @@
 		5269FDB12AE250BD00E1DFCC /* randestaurantUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = randestaurantUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5269FDB52AE250BD00E1DFCC /* randestaurantUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = randestaurantUITests.swift; sourceTree = "<group>"; };
 		5269FDB72AE250BD00E1DFCC /* randestaurantUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = randestaurantUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5269FDC52AE25BFF00E1DFCC /* GoogleMapsCore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMapsCore.xcframework; path = "../../../Downloads/GoogleMaps-8.2.0/Maps/Frameworks/GoogleMapsCore.xcframework"; sourceTree = "<group>"; };
+		5269FDC62AE25BFF00E1DFCC /* GoogleMaps.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMaps.xcframework; path = "../../../Downloads/GoogleMaps-8.2.0/Maps/Frameworks/GoogleMaps.xcframework"; sourceTree = "<group>"; };
+		52B0731C2AE2A89100273C2E /* ShopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTableViewCell.swift; sourceTree = "<group>"; };
+		52B0731D2AE2A89100273C2E /* ShopTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopTableViewCell.xib; sourceTree = "<group>"; };
+		52B073232AE2CB9600273C2E /* animation_01.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_01.json; sourceTree = "<group>"; };
+		52B073252AE2CC9900273C2E /* food_01.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = food_01.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52B073222AE2C02500273C2E /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +97,7 @@
 				5269FDAA2AE250BD00E1DFCC /* randestaurantTests */,
 				5269FDB42AE250BD00E1DFCC /* randestaurantUITests */,
 				5269FD922AE250BB00E1DFCC /* Products */,
+				5269FDC42AE25BFF00E1DFCC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,7 +120,11 @@
 				5269FD9A2AE250BB00E1DFCC /* Main.storyboard */,
 				5269FD9D2AE250BC00E1DFCC /* Assets.xcassets */,
 				5269FD9F2AE250BC00E1DFCC /* LaunchScreen.storyboard */,
+				52B073272AE2CCA400273C2E /* LottieAnimation */,
 				5269FDA22AE250BC00E1DFCC /* Info.plist */,
+				52B0731C2AE2A89100273C2E /* ShopTableViewCell.swift */,
+				52B0731D2AE2A89100273C2E /* ShopTableViewCell.xib */,
+				522A16D42AE509FB0009B0B1 /* NewButton.swift */,
 			);
 			path = randestaurant;
 			sourceTree = "<group>";
@@ -127,6 +146,24 @@
 			path = randestaurantUITests;
 			sourceTree = "<group>";
 		};
+		5269FDC42AE25BFF00E1DFCC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5269FDC62AE25BFF00E1DFCC /* GoogleMaps.xcframework */,
+				5269FDC52AE25BFF00E1DFCC /* GoogleMapsCore.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		52B073272AE2CCA400273C2E /* LottieAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				52B073232AE2CB9600273C2E /* animation_01.json */,
+				52B073252AE2CC9900273C2E /* food_01.json */,
+			);
+			path = LottieAnimation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +180,9 @@
 			dependencies = (
 			);
 			name = randestaurant;
+			packageProductDependencies = (
+				52B073212AE2C02500273C2E /* Lottie */,
+			);
 			productName = randestaurant;
 			productReference = 5269FD912AE250BB00E1DFCC /* randestaurant.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +255,9 @@
 				Base,
 			);
 			mainGroup = 5269FD882AE250BA00E1DFCC;
+			packageReferences = (
+				52B073202AE2C02500273C2E /* XCRemoteSwiftPackageReference "lottie-spm" */,
+			);
 			productRefGroup = 5269FD922AE250BB00E1DFCC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,7 +276,10 @@
 			files = (
 				5269FDA12AE250BC00E1DFCC /* LaunchScreen.storyboard in Resources */,
 				5269FD9E2AE250BC00E1DFCC /* Assets.xcassets in Resources */,
+				52B073262AE2CC9900273C2E /* food_01.json in Resources */,
 				5269FD9C2AE250BB00E1DFCC /* Main.storyboard in Resources */,
+				52B0731F2AE2A89100273C2E /* ShopTableViewCell.xib in Resources */,
+				52B073242AE2CB9600273C2E /* animation_01.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +305,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5269FD992AE250BB00E1DFCC /* ViewController.swift in Sources */,
+				522A16D52AE509FB0009B0B1 /* NewButton.swift in Sources */,
 				5269FD952AE250BB00E1DFCC /* AppDelegate.swift in Sources */,
 				5269FD972AE250BB00E1DFCC /* SceneDelegate.swift in Sources */,
+				52B0731E2AE2A89100273C2E /* ShopTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +655,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		52B073202AE2C02500273C2E /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		52B073212AE2C02500273C2E /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52B073202AE2C02500273C2E /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5269FD892AE250BA00E1DFCC /* Project object */;
 }

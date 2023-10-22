@@ -1,24 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="randestaurant" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PsB-hX-QWU" customClass="NewButton" customModule="randestaurant" customModuleProvider="target">
+                                <rect key="frame" x="30" y="668" width="333" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="6MI-Hf-8RA"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="今日は何を食べる？" titleAlignment="automatic">
+                                    <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="25"/>
+                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HsV-Em-M6s"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yvb-NM-lD6">
+                                <rect key="frame" x="30" y="69" width="333" height="589"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="5tb-EY-Pa8">
+                                        <rect key="frame" x="0.0" y="0.0" width="333" height="589"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="5tb-EY-Pa8" secondAttribute="bottom" id="CXU-Xh-ufJ"/>
+                                    <constraint firstItem="5tb-EY-Pa8" firstAttribute="leading" secondItem="yvb-NM-lD6" secondAttribute="leading" id="LNT-tF-Xsv"/>
+                                    <constraint firstItem="5tb-EY-Pa8" firstAttribute="top" secondItem="yvb-NM-lD6" secondAttribute="top" id="tq8-9V-40L"/>
+                                    <constraint firstAttribute="trailing" secondItem="5tb-EY-Pa8" secondAttribute="trailing" id="vAl-lm-dcS"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="yvb-NM-lD6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="Kkk-66-0q6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="PsB-hX-QWU" secondAttribute="bottom" id="Q6Z-9F-W4p"/>
+                            <constraint firstItem="yvb-NM-lD6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="Shs-Pm-pIM"/>
+                            <constraint firstItem="PsB-hX-QWU" firstAttribute="top" secondItem="yvb-NM-lD6" secondAttribute="bottom" constant="10" id="d8i-og-duk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PsB-hX-QWU" secondAttribute="trailing" constant="30" id="m5j-8K-i3d"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yvb-NM-lD6" secondAttribute="trailing" constant="30" id="mxb-75-cCw"/>
+                            <constraint firstItem="PsB-hX-QWU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="v3n-ud-rIn"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="button" destination="PsB-hX-QWU" id="5wW-vx-WIU"/>
+                        <outlet property="containerView" destination="yvb-NM-lD6" id="C5m-VP-tpv"/>
+                        <outlet property="shopTableView" destination="5tb-EY-Pa8" id="MxO-4W-Rv3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="23" y="-34"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
