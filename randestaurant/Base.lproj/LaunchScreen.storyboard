@@ -17,26 +17,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Randestaurant" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OuQ-t5-kUG">
-                                <rect key="frame" x="67.333333333333343" y="404.66666666666669" width="258.66666666666663" height="43"/>
+                                <rect key="frame" x="67.333333333333343" y="234.66666666666663" width="258.66666666666663" height="43"/>
                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="36"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magic_indian_oldman" translatesAutoresizingMaskIntoConstraints="NO" id="kOB-QF-j5v">
-                                <rect key="frame" x="46.666666666666657" y="204.66666666666663" width="300" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="bBK-U2-MQa"/>
-                                    <constraint firstAttribute="width" constant="300" id="ceI-Yh-6iC"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wallPaper_02" translatesAutoresizingMaskIntoConstraints="NO" id="kOB-QF-j5v">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="kOB-QF-j5v" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Gna-Cz-Zum"/>
+                            <constraint firstAttribute="bottom" secondItem="kOB-QF-j5v" secondAttribute="bottom" id="8do-Pv-fpW"/>
                             <constraint firstItem="OuQ-t5-kUG" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="LOW-vU-BjE"/>
-                            <constraint firstItem="OuQ-t5-kUG" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="mHg-6o-AOx"/>
-                            <constraint firstItem="OuQ-t5-kUG" firstAttribute="top" secondItem="kOB-QF-j5v" secondAttribute="bottom" id="wHS-Hz-YAt"/>
+                            <constraint firstItem="kOB-QF-j5v" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="SIl-Aq-MEa"/>
+                            <constraint firstAttribute="trailing" secondItem="kOB-QF-j5v" secondAttribute="trailing" id="VBY-1m-RXb"/>
+                            <constraint firstItem="kOB-QF-j5v" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="pFc-dT-3gm"/>
+                            <constraint firstItem="OuQ-t5-kUG" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-170" id="vCc-dr-AZG"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -46,7 +44,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="magic_indian_oldman" width="1024" height="1024"/>
+        <image name="wallPaper_02" width="250" height="250"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

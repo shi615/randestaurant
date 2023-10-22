@@ -26,7 +26,6 @@
 		52B073242AE2CB9600273C2E /* animation_01.json in Resources */ = {isa = PBXBuildFile; fileRef = 52B073232AE2CB9600273C2E /* animation_01.json */; };
 		52B073262AE2CC9900273C2E /* food_01.json in Resources */ = {isa = PBXBuildFile; fileRef = 52B073252AE2CC9900273C2E /* food_01.json */; };
 		52E275302AE549B60022C986 /* waiting_01.json in Resources */ = {isa = PBXBuildFile; fileRef = 52E2752F2AE549B60022C986 /* waiting_01.json */; };
-		52E275342AE562B70022C986 /* randestaurantIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 52E275332AE562B70022C986 /* randestaurantIcon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +70,6 @@
 		52B073232AE2CB9600273C2E /* animation_01.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = animation_01.json; sourceTree = "<group>"; };
 		52B073252AE2CC9900273C2E /* food_01.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = food_01.json; sourceTree = "<group>"; };
 		52E2752F2AE549B60022C986 /* waiting_01.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = waiting_01.json; sourceTree = "<group>"; };
-		52E275332AE562B70022C986 /* randestaurantIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = randestaurantIcon.png; path = ../../../../Downloads/randestaurantIcon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +127,6 @@
 				5269FD982AE250BB00E1DFCC /* ViewController.swift */,
 				5269FD9A2AE250BB00E1DFCC /* Main.storyboard */,
 				5269FD9D2AE250BC00E1DFCC /* Assets.xcassets */,
-				52E275332AE562B70022C986 /* randestaurantIcon.png */,
 				5269FD9F2AE250BC00E1DFCC /* LaunchScreen.storyboard */,
 				52B073272AE2CCA400273C2E /* LottieAnimation */,
 				5269FDA22AE250BC00E1DFCC /* Info.plist */,
@@ -293,7 +290,6 @@
 				52E275302AE549B60022C986 /* waiting_01.json in Resources */,
 				5269FDA12AE250BC00E1DFCC /* LaunchScreen.storyboard in Resources */,
 				5269FD9E2AE250BC00E1DFCC /* Assets.xcassets in Resources */,
-				52E275342AE562B70022C986 /* randestaurantIcon.png in Resources */,
 				522A16DB2AE52F3A0009B0B1 /* loading_01.json in Resources */,
 				52B073262AE2CC9900273C2E /* food_01.json in Resources */,
 				5269FD9C2AE250BB00E1DFCC /* Main.storyboard in Resources */,

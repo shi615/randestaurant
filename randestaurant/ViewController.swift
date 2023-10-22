@@ -205,9 +205,9 @@ class ViewController: UIViewController {
 
     func search_restaurant(userLocation: CLLocationCoordinate2D) {
         let request = MKLocalSearch.Request()
-        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
         
-        request.naturalLanguageQuery = "回転寿司" // 検索キーワードを入力
+        request.naturalLanguageQuery = "レストラン" // 検索キーワードを入力
         request.region = MKCoordinateRegion(center: userLocation , span: span)
         
 //        let category: [MKPointOfInterestCategory] = [
@@ -238,7 +238,6 @@ class ViewController: UIViewController {
                     location: item.placemark.coordinate
                 )
                 self.shops.append(shop)
-                print(item.pointOfInterestCategory!)
             }
             
             self.randomRestaurant()
