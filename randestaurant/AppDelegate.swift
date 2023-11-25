@@ -7,6 +7,8 @@
 
 import UIKit
 import CoreLocation
+import GoogleMaps
+import GooglePlaces
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         locationManager?.delegate = self
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.startUpdatingLocation()
+        GMSServices.provideAPIKey("AIzaSyAINKI6XVs0AKe7RzzUv7ksz0mCupM1mkI")
+        GMSPlacesClient.provideAPIKey("AIzaSyBqvPkjr-fdKSSCAjQx5zvuw4jkFX1iEno")
         
         return true
     }
