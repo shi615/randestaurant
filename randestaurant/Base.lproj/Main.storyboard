@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,7 +28,7 @@
                                     <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HsV-Em-M6s"/>
+                                    <action selector="restaurantButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HsV-Em-M6s"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oBD-lt-Doe">
@@ -176,7 +176,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="button" destination="PsB-hX-QWU" id="5wW-vx-WIU"/>
                         <outlet property="containerView" destination="yvb-NM-lD6" id="C5m-VP-tpv"/>
                         <outlet property="costTimeLabel" destination="5kg-8k-Qzh" id="daI-wx-kpE"/>
                         <outlet property="imageSlidesView" destination="oMc-UJ-4bG" id="wsE-gs-wnF"/>
@@ -185,6 +184,7 @@
                         <outlet property="noPhotosLabel" destination="N4d-Mb-RrI" id="saU-5Y-j2w"/>
                         <outlet property="noWebSiteLabel" destination="4dw-Gp-cPG" id="jtn-qY-hWt"/>
                         <outlet property="ratingLabel" destination="2F5-Se-52W" id="EA1-Fd-wdB"/>
+                        <outlet property="restaurantButton" destination="PsB-hX-QWU" id="5wW-vx-WIU"/>
                         <outlet property="scrollView" destination="oBD-lt-Doe" id="6BZ-NU-NcH"/>
                         <outlet property="shopNameLabel" destination="dWz-mE-J8X" id="fKe-9v-wIp"/>
                         <outlet property="waitingView" destination="CeP-jP-r1J" id="c6y-Di-5dr"/>

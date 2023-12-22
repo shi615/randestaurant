@@ -9,6 +9,7 @@ import UIKit
 import CoreLocation
 import GoogleMaps
 import GooglePlaces
+import GoogleNavigation
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

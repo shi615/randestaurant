@@ -12,6 +12,7 @@ import Lottie
 import WebKit
 import GoogleMaps
 import GooglePlaces
+import GoogleNavigation
 
 
 // 店名、カテゴリ、URL、写真、営業時間、評価、電話番号
@@ -28,7 +29,7 @@ struct Shop {
 }
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var restaurantButton: UIButton!
     @IBOutlet weak var shopNameLabel: UILabel!
     @IBOutlet weak var costTimeLabel: UILabel!
     @IBOutlet weak var noWebSiteLabel: UILabel!
@@ -73,32 +74,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         placesClient = GMSPlacesClient.shared()
         getPlaceDetail()
     }
-
     // 現在地座標更新時に範囲座標を更新する
     internal func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
+            // 現在地を更新
+            userLocation = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             // 東北座標更新
             northEast = CLLocationCoordinate2D(latitude: location.coordinate.latitude + distance * latitudeDegreesPerKm, longitude: location.coordinate.longitude + distance * longitudeDegreesPerKmAt35Lat)
             // 南西座標更新
             southWest = CLLocationCoordinate2D(latitude: location.coordinate.latitude - distance * latitudeDegreesPerKm, longitude: location.coordinate.longitude - distance * longitudeDegreesPerKmAt35Lat)
-            
-            // Specify the place data types to return.
-//            let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt64(UInt(GMSPlaceField.name.rawValue) | UInt(GMSPlaceField.placeID.rawValue)))
-//            placesClient?.findPlaceLikelihoodsFromCurrentLocation(withPlaceFields: fields, callback: {
-//              (placeLikelihoodList: Array<GMSPlaceLikelihood>?, error: Error?) in
-//              if let error = error {
-//                print("An error occurred: \(error.localizedDescription)")
-//                return
-//              }
-//
-//              if let placeLikelihoodList = placeLikelihoodList {
-//                for likelihood in placeLikelihoodList {
-//                  let place = likelihood.place
-//                  print("Current Place name \(String(describing: place.name)) at likelihood \(likelihood.likelihood)")
-//                  print("Current PlaceID \(String(describing: place.placeID))")
-//                }
-//              }
-//            })
         }
     }
     
@@ -204,8 +188,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         for subview in imageSlidesView.subviews {
             subview.removeFromSuperview()
         }
-        // 加载图片资源
-//        let images = [UIImage(named: "wallPaper"), UIImage(named: "wallPaper_02")].compactMap { $0 }
+
         let slideshowView = ImageSlideshowView(frame: .zero, images: images)
         imageSlidesView.backgroundColor = .clear
         imageSlidesView.addSubview(slideshowView)
@@ -224,23 +207,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     
     // ボタンを設置する
     private func setUpButton() {
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 0, height: 2)
-        button.layer.shadowRadius = 5
-        button.layer.shadowOpacity = 0.5
-        button.layer.cornerRadius = 30
+        restaurantButton.layer.shadowColor = UIColor.black.cgColor
+        restaurantButton.layer.shadowOffset = CGSize(width: 0, height: 2)
+        restaurantButton.layer.shadowRadius = 5
+        restaurantButton.layer.shadowOpacity = 0.5
+        restaurantButton.layer.cornerRadius = 30
 
-        button.backgroundColor = .white
+        restaurantButton.backgroundColor = .white
         
-        button.configuration?.contentInsets.top = 100
-        button.setNeedsLayout()
-        setUpFoodView()
+        restaurantButton.configuration?.contentInsets.top = 100
+        restaurantButton.setNeedsLayout()
+//        setUpFoodView()
     }
     
     // ボタンが押された時
-    @IBAction func buttonPressed(_ sender: UIButton) {
+    @IBAction func restaurantButtonPressed(_ sender: UIButton) {
+        searchQuery = "レストラン"
         foodAnimationView.play()
         startLoading()
+        if let userLocation = userLocation {
+            search_restaurant(userLocation: userLocation)
+        }
         getPlaceDetail()
     }
     
@@ -273,21 +260,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     // ボタン上のフードアニメーションを設置する
-    private func setUpFoodView() {
-        foodAnimationView = LottieAnimationView(name: "food_01")
-        foodAnimationView.animationSpeed = 3
-        foodAnimationView.translatesAutoresizingMaskIntoConstraints = false
-        foodAnimationView.isUserInteractionEnabled = false
-        foodAnimationView.loopMode = .loop
-        
-        button.addSubview(foodAnimationView)
-        
-        NSLayoutConstraint.activate([
-            foodAnimationView.centerXAnchor.constraint(equalTo: button.centerXAnchor),
-            foodAnimationView.bottomAnchor.constraint(equalTo: button.titleLabel!.topAnchor, constant: -5),
-            foodAnimationView.heightAnchor.constraint(equalToConstant: 100)
-        ])
-    }
+//    private func setUpFoodView() {
+//        foodAnimationView = LottieAnimationView(name: "food_01")
+//        foodAnimationView.animationSpeed = 3
+//        foodAnimationView.translatesAutoresizingMaskIntoConstraints = false
+//        foodAnimationView.isUserInteractionEnabled = false
+//        foodAnimationView.loopMode = .loop
+//        
+//        restaurantButton.addSubview(foodAnimationView)
+//        
+//        NSLayoutConstraint.activate([
+//            foodAnimationView.centerXAnchor.constraint(equalTo: restaurantButton.centerXAnchor),
+//            foodAnimationView.bottomAnchor.constraint(equalTo: restaurantButton.titleLabel!.topAnchor, constant: -5),
+//            foodAnimationView.heightAnchor.constraint(equalToConstant: 100)
+//        ])
+//    }
     
     // GMSPlace情報を取得する
     private func getPlaceDetail() {
@@ -463,7 +450,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
         } else {
-            button.titleLabel?.text = "座標見つかりません！"
+            restaurantButton.titleLabel?.text = "座標見つかりません！"
         }
     }
 
@@ -471,7 +458,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let request = MKLocalSearch.Request()
         let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
         
-        request.naturalLanguageQuery = "パン屋" // 検索キーワードを入力
+        request.naturalLanguageQuery = "レストラン" // 検索キーワードを入力
         request.region = MKCoordinateRegion(center: userLocation , span: span)
         
 //        let category: [MKPointOfInterestCategory] = [
@@ -490,9 +477,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         search.start { (response, error) in
             guard response != nil else {
                 print("Search error: \(error?.localizedDescription ?? "Unknown error")")
-                self.stopLoading()
+//                self.stopLoading()
                 return
             }
+            
+            var stores: [String] = []
+            
+            for item in response!.mapItems {
+                if let name = item.name {
+                    print(name)
+                    stores.append(name)
+                }
+            }
+            
+            self.searchQuery = stores[Int.random(in: 0..<stores.count)]
+            print(self.searchQuery + " was selected")
 
 //            for item in response.mapItems {
 //                let shop = Shop(
@@ -504,8 +503,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 //                self.shops.append(shop)
 //            }
             
-            self.randomRestaurant()
-            self.stopLoading()
+//            self.randomRestaurant()
+//            self.stopLoading()
         }
     }
     
